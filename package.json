@@ -13,7 +13,8 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "scripts": {
-    "build": "`npm bin`/babel src -d lib"
+    "build": "`npm bin`/babel src -d lib",
+    "pub": "npm publish"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

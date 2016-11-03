@@ -1,4 +1,5 @@
 import createHistory from 'history/createBrowserHistory';
+import { queryToJson } from './utils';
 
 export function createHistoryFromLocation(location) {
   const { pathname, hash, search } = location;
