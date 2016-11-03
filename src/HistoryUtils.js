@@ -1,11 +1,7 @@
-import { queryToJson } from './utils';
+import history from './history';
 
-export function createRouterFromLocation(location) {
-  const { pathname, hash, search } = location;
-  return {
-    pathname,
-    hash,
-    search,
-    query: queryToJson(search.slice(search.indexOf('?') + 1))
-  };
-}
+export const jumpTo = to => history.push(to);
+export const goBack = () => history.goBack();
+export const goForward = () => history.goForward();
+
+export default { jumpTo, goBack, goForward };

@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Render from './RouterRender';
 import XPropTypes from './XPropTypes';
 import { createRoutes, mergeRoutes } from './RouteUtils';
-import history from './history';
-import { createRouterFromLocation } from './HistoryUtils';
+import history, { createHistoryFromLocation } from './history';
 
 const { object, func, string, element } = PropTypes;
 
@@ -24,7 +23,7 @@ export default class Router extends Component {
   };
   constructor() {
     super();
-    this.state = { routes: [], location: createRouterFromLocation(window.location) };
+    this.state = { routes: [], location: createHistoryFromLocation(window.location) };
     if (this.constructor.instance) {
       return this.constructor.instance;
     }
@@ -54,7 +53,7 @@ export default class Router extends Component {
   }
   init() {
     this.props.history.listen(
-      location => this.setState({ location: createRouterFromLocation(location)})
+      location => this.setState({ location: createHistoryFromLocation(location)})
     );
   }
 }
