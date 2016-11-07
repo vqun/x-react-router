@@ -75,10 +75,7 @@ ReactDOM.render(routes, document.getElementById('container'));
 --
 > Q: 所有的路由都有一个相同的前缀，可以在定义在哪？
 
-> A:
-```js
-<Router prefix='xxx'>...</Router>
-```
+> A:```<Router prefix='xxx'>...</Router>```
 
 --
 > Q: 非Route的children，是怎么处理的？
