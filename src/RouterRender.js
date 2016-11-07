@@ -24,7 +24,7 @@ export default class RouterRender extends Component {
     const path = location.pathname;
     const routeList = cache(path) || cache(path, matchRoutes(routes, path));
     if (!routeList) return null;
-    const components = this.renderRoutes(routeList, pathname);
+    const components = this.renderRoutes(routeList, path);
     return components.length > 1 ? <div>{components}</div> : components[0];
   }
   renderRoutes(routes, key) {
