@@ -24,13 +24,13 @@ export default class RouterRender extends Component {
     const path = location.pathname;
     const routeList = cache(path) || cache(path, matchRoutes(routes, path));
     if (!routeList) return null;
-    const components = this.renderRoutes(routeList, path);
+    const components = this.renderRoutes(routeList, '');
     return components.length > 1 ? <div>{components}</div> : components[0];
   }
   renderRoutes(routes, key) {
     const ret = [];
     for (let k = routes.length; k--;) {
-      ret.unshift(this.renderRoute(routes[k], `${key}-${k}`));
+      ret.unshift(this.renderRoute(routes[k], `${key}.${k}`));
     }
     return ret;
   }
@@ -39,7 +39,7 @@ export default class RouterRender extends Component {
     const { root, childRoutes } = route;
     return render({
       route: root,
-      children: childRoutes && this.renderRoutes(childRoutes, `${key}`),
+      children: childRoutes && this.renderRoutes(childRoutes, key),
       key,
     });
   }

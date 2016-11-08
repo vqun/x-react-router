@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "`npm bin`/babel src -d lib",
-    "pub": "npm publish"
+    "pub": "npm version patch ; npm publish"
   },
   "dependencies": {
     "history": "^4.4.0",
