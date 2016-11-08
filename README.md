@@ -43,6 +43,7 @@ ReactDOM.render(routes, document.getElementById('container'));
 - [x] 无path的Route自动定义path与父级相同；无component使用默认component[见Route中XComponent]
 - [x] 嵌套路由
 - [x] 默认Loading：定义在Route中，不做统一处理
+- [ ] 路由预加载
 - [ ] 更新文件
 - [ ] 路由merge逻辑待优化（tree travel）
 

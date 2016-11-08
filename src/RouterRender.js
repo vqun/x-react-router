@@ -30,7 +30,7 @@ export default class RouterRender extends Component {
   renderRoutes(routes, key) {
     const ret = [];
     for (let k = routes.length; k--;) {
-      ret.unshift(this.renderRoute(routes[k]), `${key}-${k}`);
+      ret.unshift(this.renderRoute(routes[k], `${key}-${k}`));
     }
     return ret;
   }
