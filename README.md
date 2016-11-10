@@ -1,6 +1,9 @@
 # X-React Router
 
-## 长啥样
+## Install
+> npm install x-react-router
+
+## What it looks like
 ```javascript
 import { Route, Router, Link } from 'x-react-routing';
 
