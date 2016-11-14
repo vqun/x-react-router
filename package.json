@@ -7,7 +7,7 @@
     "veequn@qq.com"
   ],
   "license": "MIT",
-  "repository": "https://github.com/vqun/react-routing",
+  "repository": "https://github.com/vqun/x-react-router",
   "main": "lib/index.js",
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"
