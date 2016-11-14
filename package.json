@@ -4,23 +4,21 @@
   "description": "A complete routing library for React like react-router, but more than it.",
   "author": "veequn@qq.com",
   "keywords": [
-    "x-react-router",
-    "x-react-route",
-    "x-react-routing",
-    "react-router",
-    "react-routing",
-    "react-route",
-    "react",
     "router",
-    "routing",
-    "routes"
+    "react",
+    "react-route",
+    "react-routing",
+    "react-router",
+    "x-react-routing",
+    "x-react-route",
+    "x-react-router"
   ],
   "maintainers": [
     "veequn@qq.com"
   ],
   "license": "MIT",
   "repository": "https://github.com/vqun/x-react-router",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "bugs": {
     "url": "https://github.com/vqun/x-react-router/issues",
     "email": "veequn@qq.com"
