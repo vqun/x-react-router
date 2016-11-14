@@ -3,17 +3,33 @@
   "version": "0.3.0",
   "description": "A complete routing library for React like react-router, but more than it.",
   "author": "veequn@qq.com",
+  "keywords": [
+    "x-react-router",
+    "x-react-route",
+    "x-react-routing",
+    "react-router",
+    "react-routing",
+    "react-route",
+    "react",
+    "router",
+    "routing",
+    "routes"
+  ],
   "maintainers": [
     "veequn@qq.com"
   ],
   "license": "MIT",
   "repository": "https://github.com/vqun/x-react-router",
-  "main": "lib/index.js",
+  "main": "./index.js",
+  "bugs": {
+    "url": "https://github.com/vqun/x-react-router/issues",
+    "email": "veequn@qq.com"
+  },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.0.0"
   },
   "scripts": {
-    "build": "`npm bin`/babel src -d lib",
+    "build": "`npm bin`/babel src -d lib ; `npm bin`/webpack ./lib/index.js ./index.js",
     "pub": "npm version patch ; git push ; npm publish"
   },
   "dependencies": {
@@ -27,6 +43,7 @@
     "babel-preset-stage-0": "^6.16.0",
     "history": "^4.4.0",
     "path-to-regexp": "^1.6.0",
-    "react": "^15.3.2"
+    "react": "^15.3.2",
+    "webpack": "^1.13.3"
   }
 }
