@@ -27,7 +27,7 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "scripts": {
-    "build": "`npm bin`/babel src -d lib ; `npm bin`/webpack ./lib/index.js ./index.js",
+    "build": "`npm bin`/babel src -d lib",
     "pub": "npm version patch ; git push ; npm publish"
   },
   "dependencies": {

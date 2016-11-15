@@ -1,3 +1,9 @@
+# v0.3.3
+修复缓存清除失效【多页面路由最好从该版本用起】
+
+# v0.3.2
+回滚v0.3.1的webpack打包功能
+
 # v0.3.1
 1. 添加HISTORY.md
 2. 修改package.json配置：keywords添加，main修改为./index.js
