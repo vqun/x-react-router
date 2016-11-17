@@ -46,6 +46,7 @@ ReactDOM.render(routes, document.getElementById('container'));
 - [x] 无path的Route自动定义path与父级相同；无component使用默认component[见Route中XComponent]
 - [x] 嵌套路由
 - [x] 默认Loading：定义在Route中，不做统一处理
+- [ ] 优化路由缓存清除：懒加载路由加载后，如何对旧路由缓存进行清除
 - [ ] 路由预加载
 - [ ] 更新文件
 - [ ] 路由merge逻辑待优化（tree travel）
@@ -55,6 +56,11 @@ ReactDOM.render(routes, document.getElementById('container'));
 > Q: 为什么不在react-router基础上改造？
 
 > A: 呵呵~
+
+--
+> Q: 路由模式是什么？
+
+> A: 使用[path-to-regexp](https://www.npmjs.com/package/path-to-regexp)
 
 --
 > Q: 路由懒加载怎么处理？
@@ -100,3 +106,12 @@ ReactDOM.render(routes, document.getElementById('container'));
 > Q: 为什么相同的路由，其component不归一到一个RouteObject中？
 
 > A: 相同的路由，但是，在RouteObjectList中level可能不一样；而相同level，也可能出现component所需要的props不一样
+
+--
+> Q: 路由匹配模式值从哪获取（0.4.0开始）
+
+> A: 如下，默认PATH
+```javascript
+import { RouterModes } from 'x-react-router'
+const { PATH, QUERY, HASH } = RouterModes;
+```

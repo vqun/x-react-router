@@ -1,3 +1,10 @@
+# v0.4.0
+1. 关闭路由缓存功能：先前的缓存逻辑不够完善，缓存逻辑太复杂，暂不做支持，之后版本再做考虑
+2. 路由合并bug修复：前后路由相同路由component均为string时，旧版会删除该路由；新版本会以新路由老覆盖旧路由
+3. 增加路由管理：Routes
+4. 懒加载的路由加载完后，将原路由删除，以避免加载后的路由不含旧路由时，旧路由被保留
+5. 增加路由匹配模式：path模式、query模式和hash模式。path模式在路由匹配时，只将location的pathname作为匹配对象，匹配pathname则记为正确匹配，无论location是否有query和hash；query模式则将location的pathname和search一起作为匹配对象；hash模式则将location的pathname、query和hash全部作为匹配对象。模式值可 import { RouterModes } from 'x-react-router'，有三个值：{ PATH, QUERY, HASH } = RouterModes
+
 # v0.3.3
 修复缓存清除失效【多页面路由最好从该版本用起】
 
