@@ -35,83 +35,128 @@ const routes = (
 ReactDOM.render(routes, document.getElementById('container'));
 ```
 
+## Examples
+See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
+
 ## TODO:
-- [x] 基本路由功能，见[react-router](https://github.com/ReactTraining/react-router)
-- [x] 支持懒加载路由：以component=[STRING]，加载[STRING]文件，完成component的加载并渲染
-- [x] 缓存路由组件链
-- [x] 通过Route传入自定义props至component（当为React-Component时）
-- [x] component接收路由信息，以location为props传给component
-- [x] 路由前缀 <Router prefix=''></Router>
-- [x] 支持非Route的children，重构成Route
-- [x] 无path的Route自动定义path与父级相同；无component使用默认component[见Route中XComponent]
-- [x] 嵌套路由
-- [x] 默认Loading：定义在Route中，不做统一处理
-- [ ] 优化路由缓存清除：懒加载路由加载后，如何对旧路由缓存进行清除
-- [ ] 路由预加载
-- [ ] 更新文件
-- [ ] 路由merge逻辑待优化（tree travel）
+- [x] Basic Routing: see [react-router](https://github.com/ReactTraining/react-router), similar but not all same (such as x-react-router use [path-to-regexp](https://www.npmjs.com/package/path-to-regexp))
+- [x] Supporting lazy-load: set `component=[STRING]`, load `STRING[.js]`, and re-render the page
+- [x] Supporting self-defined props: passing the self-defined props to Route, `x-react-router` will pass to component(React Component/function) when rendering
+- [x] Passing the loaction info to component: component and the children can get it with [react context](https://facebook.github.io/react/docs/context.html)
+- [x] Nested Routes: nested Route's component will be rendered as a parent Route's child, you must explicitly use it by `this.props.children` (same as `react-router`)
+- [x] Route prefix: `<Router prefix='/prefix'></Router>`, all the children routes will generate the url with this `prefix`
+- [x] Supporting the non-Route children: you can pass a valid children(see `isValidChildren`@`lib/RouteUtils.js`) and `x-react-router` can auto compile it to a valid Route with parent path 
+- [x] Route without path: use parent's path
+- [x] Route without component: use the default component[see XComponent in Route.js]
+- [x] Default loading: pass `loading` as the Route's props, use it when lazy load
+- [x] Optimizing the Routes merging
+- [ ] Route preloading
+- [ ] File updating
+- [ ] Caching the component-list
+
+**P.S**. `x-react-router` supports Route without path or component, but not without both. Route without path and component will be ignored, and so it is with it's children.
 
 
 ## Q&A:
-> Q: 为什么不在react-router基础上改造？
+> Q: Why not extend on `react-router`?
 
-> A: 呵呵~
-
---
-> Q: 路由模式是什么？
-
-> A: 使用[path-to-regexp](https://www.npmjs.com/package/path-to-regexp)
+> A: Hehe(呵呵)~
 
 --
-> Q: 路由懒加载怎么处理？
+> Q: What the mode of Route's path?
 
-> A: Route的component传入路由控制文件，x-react-router会自动加载控制文件，必须保证控制文件事先定义好懒加载的路由规则，x-react-router不会也不懂得怎么处理，你需要自己在控制文件中定义。同时，***新规则会与旧规则做合并，相同路由合并时，新规则会覆盖旧规则***。
-
---
-> Q: 路由组件链缓存规则
-
-> A: 第一次访问的路由，其相应的组件链会被缓存在一个对象中；新路由规则在与旧规则合并时，若碰到旧规则被覆盖，则***相应的路由组件链缓存会被清除***。
+> A: see [path-to-regexp](https://www.npmjs.com/package/path-to-regexp)
 
 --
-> Q: 组件如何获取路由信息？
+> Q: What `x-react-router` does for Route's lazy load?
 
-> A: x-react-router会将路由信息（包括pathname, query, hash）以组件props形式传给组件，组件可通过props.location获取相应的信息。***注：路由信息不包含host，protocol等***
-
---
-> Q: 组件需要一些自定义的props，如何处理？
-
-> A: 路由组件可以通过将这些props传给Route，x-react-router会原封不动回传给component
+> A: By passing a `string` component(path of the file contains the Routes' real definitions) to Route, `x-react-router` will load the file and compile the new routes and olds, then re-render the page. (in the file, you should make sure the new Router run after file being executed)
 
 --
-> Q: 所有的路由都有一个相同的前缀，可以在定义在哪？
+> ~~Q: 路由组件链缓存规则~~
 
-> A:```<Router prefix='xxx'>...</Router>```
-
---
-> Q: 非Route的children，是怎么处理的？
-
-> A: x-react-router会自动处理。在构建RouteObject时，会将他们重构成RouteObject，同时，其路由规则与父级相同，之后x-react-router会“一视同仁”。
+> ~~A: 第一次访问的路由，其相应的组件链会被缓存在一个对象中；新路由规则在与旧规则合并时，若碰到旧规则被覆盖，则***相应的路由组件链缓存会被清除***。~~
 
 --
-> Q: 没有path或者没有component的Route是怎么处理的？
+> Q: How can the component get the location info (route info)?
 
-> A: 没有path，x-react-router会默认取其父级path；没有component，x-react-router会取默认component【见Route中的XComponent】
-
---
-> Q: 懒加载时候的过渡，如loading
-
-> A: 将需要好的过渡组件传给Route的props
+> A: `x-react-router` will pass the location info (including pathname/path, query, hash) as a prop to the component defined in Router. And you can get the info through `props.location`. See all info by logging the `props.location`***P.S.: location info does not include host, protocol, port and so on***
 
 --
-> Q: 为什么相同的路由，其component不归一到一个RouteObject中？
+> Q: How can I pass some self-defined props to the component when it rendered?
 
-> A: 相同的路由，但是，在RouteObjectList中level可能不一样；而相同level，也可能出现component所需要的props不一样
+> A: Just pass these props to Route, `x-react-router` will do the next.
 
 --
-> Q: 路由匹配模式值从哪获取（0.4.0开始）
+> Q: My routes' pathes have a same prefix, and I want to define it only once. What can I do?
 
-> A: 如下，默认PATH
+> A:```<Router prefix="YourPrefix">...</Router>```
+
+--
+> Q: How `x-react-router` handles the none-Routes?
+
+> A: `x-react-router` will compile them to a valid `[Routing]` by setting their path same with parent's.
+
+--
+> Q: How `x-react-router` handles the Routes without `path` or `component`?
+
+> A: without `path`, `x-react-router` will set the path same with parent's; without `component`, set default component (see XComponent@lib/Route.js).
+
+--
+> Q: I want a loading when lazy loading, what can I do?
+
+> A: pass the `loading` prop to the Route.
+
+--
+> Q: Why cannot the same routes been unified to one `[Routing]`?
+
+> A: Same routes, but can be on different level, have different parents; event same level, they may have different props. Best way is to treat them 'different routes'.
+
+--
+> Q: I want the `x-react-router` to match the location/route on query level, or hash level, what can I do?
+
+> A: pass the `mode` prop to `Router`
+
+--
+> Q: What are path level, query level and hash level? (In `x-react-router`, we call them `modes`)
+
+> A: They mean how the location/route matched when rendering a component. For examples:
+```javascript
+// location = 'http://examples.com/demo/simple?q=1#hash
+// path level
+if (`/demo/simple`.exec(Route.path))
+  render(Route.component);
+
+// query level
+if (`/demo/simple?q=1`.exec(Route.path))
+  render(Route.component);
+
+// hash level
+if (`/demo/simple?q=1#hash`.exec(Route.path))
+  render(Route.component);
+```
+
+--
+> Q: How can I get the Route's matching modes? (from v0.4.0)
+
+> A: see below: PATH is defaulted
 ```javascript
 import { RouterModes } from 'x-react-router'
 const { PATH, QUERY, HASH } = RouterModes;
+
+// then use them like this:
+// path level
+<Router mode={PATH} {...otherProps}>
+  // ... <Routes />
+</Router>
+
+// query level
+<Router mode={QUERY} {...otherProps}>
+  // ... <Routes />
+</Router>
+
+// hash level
+<Router mode={HASH} {...otherProps}>
+  // ... <Routes />
+</Router>
 ```
