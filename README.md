@@ -121,6 +121,7 @@ See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
 > Q: What are path level, query level and hash level? (In `x-react-router`, we call them `modes`)
 
 > A: They mean how the location/route matched when rendering a component. For examples:
+
 ```javascript
 // location = 'http://examples.com/demo/simple?q=1#hash
 // path level
@@ -140,6 +141,7 @@ if (`/demo/simple?q=1#hash`.exec(Route.path))
 > Q: How can I get the Route's matching modes? (from v0.4.0)
 
 > A: see below: PATH is defaulted
+
 ```javascript
 import { RouterModes } from 'x-react-router'
 const { PATH, QUERY, HASH } = RouterModes;
