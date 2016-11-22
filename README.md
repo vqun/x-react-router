@@ -1,4 +1,5 @@
 # X-React Router
+A complete routing library for React like react-router, but more than it.
 
 ## Install
 > npm install x-react-router
@@ -39,20 +40,39 @@ ReactDOM.render(routes, document.getElementById('container'));
 See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
 
 ## TODO:
-- [x] Basic Routing: see [react-router](https://github.com/ReactTraining/react-router), similar but not all same (such as x-react-router use [path-to-regexp](https://www.npmjs.com/package/path-to-regexp))
-- [x] Supporting lazy-load: set `component=[STRING]`, load `STRING[.js]`, and re-render the page
-- [x] Supporting self-defined props: passing the self-defined props to Route, `x-react-router` will pass to component(React Component/function) when rendering
-- [x] Passing the loaction info to component: component and the children can get it with [react context](https://facebook.github.io/react/docs/context.html)
-- [x] Nested Routes: nested Route's component will be rendered as a parent Route's child, you must explicitly use it by `this.props.children` (same as `react-router`)
-- [x] Route prefix: `<Router prefix='/prefix'></Router>`, all the children routes will generate the url with this `prefix`
-- [x] Supporting the non-Route children: you can pass a valid children(see `isValidChildren`@`lib/RouteUtils.js`) and `x-react-router` can auto compile it to a valid Route with parent path 
-- [x] Route without path: use parent's path
-- [x] Route without component: use the default component[see XComponent in Route.js]
-- [x] Default loading: pass `loading` as the Route's props, use it when lazy load
-- [x] Optimizing the Routes merging
-- [ ] Route preloading
-- [ ] File updating
-- [ ] Caching the component-list
+- [x] **Basic Routing**
+ - see [react-router](https://github.com/ReactTraining/react-router)
+ - similar but not all same (such as x-react-router use [path-to-regexp](https://www.npmjs.com/package/path-to-regexp))
+- [x] **Supporting lazy-load**
+ - set `component=[STRING]`
+ - load `STRING[.js]`
+ - re-render the page
+- [x] **Supporting self-defined props**
+ - passing the self-defined props to Route
+ - `x-react-router` will pass to component(React Component/function) when rendering
+- [x] **Passing the loaction info to component**
+ - component and the children can get it with `props.location`
+ - or from [react context](https://facebook.github.io/react/docs/context.html)
+- [x] **Nested Routes**
+ - nested Route's component will be rendered as a parent Route's child
+ - you must explicitly use it by `this.props.children` (same as `react-router`)
+- [x] **Route prefix**
+ - `<Router prefix='/prefix'></Router>`
+ - all the children routes will generate the url with this `prefix`
+- [x] **Supporting the non-Route children**
+ - pass a valid children(see `isValidChildren`@`lib/RouteUtils.js`)
+ - `x-react-router` can auto compile it to a valid Route with parent path 
+- [x] **Route without path**
+ - use parent's path
+- [x] **Route without component**
+ - use the default component[see `XComponent`@`lib/Route.js`]
+- [x] **Default loading**
+ - pass `loading` as the Route's props
+ - `x-react-router` will use it when lazy loading
+- [x] **Optimizing the Routes merging**
+- [ ] **Route preloading**
+- [ ] **File updating**
+- [ ] **Caching the component-list**
 
 **P.S**. `x-react-router` supports Route without path or component, but not without both. Route without path and component will be ignored, and so it is with it's children.
 
