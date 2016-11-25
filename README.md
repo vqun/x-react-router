@@ -70,7 +70,7 @@ See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
  - pass `loading` as the Route's props
  - `x-react-router` will use it when lazy loading
 - [x] **Optimizing the Routes merging**
-- [ ] **Route preloading**
+- [x] **Route preloading**: since v0.5.0. Just add `preload={true}` to Route whose router needs preload. `x-react-router` will not apply the preloaded router, util the `Route[path=url, preload=true]` was visited.
 - [ ] **File updating**
 - [ ] **Caching the component-list**
 
@@ -182,3 +182,13 @@ const { PATH, QUERY, HASH } = RouterModes;
   // ... <Routes />
 </Router>
 ```
+
+--
+> Q: How to make some of the Routes preloaded? (from v0.5.0)
+
+> A: Just pass a `preload` prop to Route, and value it `true`:
+
+```javascript
+<Route path="/demo" component="js/demo" preload={true} />
+```
+> then, `x-react-router` will load the `component="js/demo"` and the Routes will apply once the `path="/demo"` is visited.

@@ -1,3 +1,6 @@
+# 0.5.0
+添加预加载功能：Route[preload=true]
+
 # 0.4.2
 1. 对含query和hash的路由合并时，/特殊处理
 2. 修复首次加载时，location没有做mode处理
