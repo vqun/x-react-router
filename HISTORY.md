@@ -1,5 +1,6 @@
 # 0.5.0
-添加预加载功能：Route[preload=true]
+1. 添加预加载功能：Route[preload=true]
+2. DONOT USE V0.5.1/V0.5.2
 
 # 0.4.2
 1. 对含query和hash的路由合并时，/特殊处理
