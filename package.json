@@ -1,6 +1,6 @@
 {
   "name": "x-react-router",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A complete routing library for React like react-router, but more than it.",
   "author": "veequn@qq.com",
   "keywords": [
