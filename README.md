@@ -36,6 +36,9 @@ const routes = (
 ReactDOM.render(routes, document.getElementById('container'));
 ```
 
+## Important
+1. Make sure `x-react-router` is required **only once** in your app. Such as put it in `CommonsChunkPlugin` if using webpack.
+
 ## Examples
 See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
 
