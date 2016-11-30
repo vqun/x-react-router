@@ -43,6 +43,10 @@ ReactDOM.render(routes, document.getElementById('container'));
 See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
 
 ## TODO:
+- [ ] **Parsing path params**: pass the path params defined in `path` to `location` so the Routes could get them for more
+- [ ] **Supporting Sub-Routes merging**: before v0.7.2, `x-react-router` only supports merging same Route-tree, if the structures are different, `x-react-router` will mark them new Routes
+- [ ] **File updating** 
+- [ ] **Caching the component-list**
 - [x] **Basic Routing**
  - see [react-router](https://github.com/ReactTraining/react-router)
  - similar but not all same (such as x-react-router use [path-to-regexp](https://www.npmjs.com/package/path-to-regexp))
@@ -74,8 +78,6 @@ See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
  - `x-react-router` will use it when lazy loading
 - [x] **Optimizing the Routes merging**
 - [x] **Route preloading**: since v0.5.0. Just add `preload={true}` to Route whose router needs preload. `x-react-router` will not apply the preloaded router, util the `Route[path=url, preload=true]` was visited.
-- [ ] **File updating**
-- [ ] **Caching the component-list**
 
 **P.S**. `x-react-router` supports Route without path or component, but not without both. Route without path and component will be ignored, and so it is with it's children.
 
