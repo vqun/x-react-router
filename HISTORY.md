@@ -1,3 +1,47 @@
+# v1.0.0
+**IMPORTANT**: Starting with v1.0.0, `x-react-router` will change the mechanisms on Route merging. And **INCOMPATIBLE** with `x-react-router@"<1.0.0"`. In `x-react-router@"<1.0.0"`, if your lazy-loading(including preloads) Routes will be merged to old one's root. But, in `x-react-router@">=1.0.0"`, the lazy-loading Routes will be **INSERTED** to where they were loaded. For example:
+
+```javascript
+// Home:
+<Router>
+  <Route path="/(home)?" component={Home} />
+  <Route path="/profile" component={Profile}>
+    <Route path="p1" component="/js/profile/p1" />
+    <Route path="p2" component="/js/profile/p2" />
+  </Route>
+  <Route path="/setting" component="/js/setting" />
+</Router>
+
+// Profile/p1: profile/p1 is lazy-loaded
+<Router>
+  <Route path="/profile/p1" component={P1} />
+  <Route path="/profile/p3" component={P3} />
+</Router>
+
+// In x-react-router@"<1.0.0", x-react-router will have a such result:
+<Router>
+  <Route path="/(home)?" component={Home} />
+  <Route path="/profile" component={Profile}>
+    // <Route path="p1" component="/js/profile/p1" /> // This p1 is deleted
+    <Route path="p2" component="/js/profile/p2" />
+  </Route>
+  <Route path="/setting" component="/js/setting" />
+  <Route path="/profile/p1" component={P1} />
+  <Route path="/profile/p3" component={P3} />
+</Router>
+
+// BUT, in x-react-router@">=1.0.0", x-react-router will have a result:
+<Router>
+  <Route path="/(home)?" component={Home} />
+  <Route path="/profile" component={Profile}>
+    <Route path="p1" component={P1} /> // the old one is replaced by the new ones
+    <Route path="p3" component={P3} />
+    <Route path="p2" component="/js/profile/p2" />
+  </Route>
+  <Route path="/setting" component="/js/setting" />
+</Router>
+```
+
 # v0.7.3 & v0.7.4
 修复嵌套Route预加载问题
 
