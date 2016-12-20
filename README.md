@@ -1,13 +1,36 @@
 # X-React Router
 A complete routing library for React like react-router, but more than it.
 
+## v1.2.0
+Supporting `params`: `x-react-router@>=1.2.0` will pass the matched route information as `props.params` to the **matched** Route. You could get the route information in the **component** simply through **`props.params`**.
+### What is `params`
+`params` is an object which contains all the defined params in `Route[path]`. see [path-to-regexp](https://www.npmjs.com/package/path-to-regexp)). For example:
+```javascript
+  <Route path="/(profile)/:foo/:bar" component={Profile} />
+
+  // then, location = 'http://www.example/profile/john/1'
+
+  // So, `x-react-router` will pass a prop named `params` to component `Profile`:
+
+  this.props.params = {
+    0: 'profile',
+    foo: 'john',
+    bar: '1' // it is a string, not number
+  };
+```
+
 ## Install
 > npm install x-react-router
 
-# x-react-router v1.x.x
-`x-react-router` v1.x.x is currently released with the next tag (meaning it will not be marked as latest). You can install it with semver:
+# x-react-router@>1.0.0
+~~`x-react-router` v1.x.x is currently released with the next tag (meaning it will not be marked as latest). You can install it with semver:~~
 
-> npm install x-react-router@next
+> ~~npm install x-react-router@next~~
+
+**From now on, `x-react-router@next` will tranform to `x-react-router@latest`**
+
+# x-react-router@<1.0.0
+**`x-react-router@<1.0.0` is deprecated now. And will no longer be in maintenance and upgraded. It is a great recommendation for you to upgrade `x-react-router` to uppper 1.0.0, or `@latest`**
 
 See **Important** below.
 
@@ -45,7 +68,7 @@ ReactDOM.render(routes, document.getElementById('container'));
 
 ## Important
 1. Make sure `x-react-router` is required **only once** in your app. Such as put it in `CommonsChunkPlugin` if using webpack.
-2. **[!!!!]**Starting with v1.0.0, `x-react-router` will change the mechanisms on Route merging. And **INCOMPATIBLE** with `x-react-router@"<1.0.0"`. In `x-react-router@"<1.0.0"`, if your lazy-loading(including preloads) Routes will be merged to old one's root. But, in `x-react-router@">=1.0.0"`, the lazy-loading Routes will be **INSERTED** to where they were loaded. For example:
+2. **!!!!**Starting with v1.0.0, `x-react-router` will change the mechanisms on Route merging. And **INCOMPATIBLE** with `x-react-router@"<1.0.0"`. In `x-react-router@"<1.0.0"`, if your lazy-loading(including preloads) Routes will be merged to old one's root. But, in `x-react-router@">=1.0.0"`, the lazy-loading Routes will be **INSERTED** to where they were loaded. For example:
 
 ```javascript
 // Home:
@@ -93,13 +116,13 @@ ReactDOM.render(routes, document.getElementById('container'));
 See [x-react-router-demo](https://github.com/vqun/x-react-router-demo)
 
 ## TODO:
-- [ ] **Parsing path params**: pass the path params defined in `path` to `location` so the Routes could get them for more
 - [ ] **Supporting Sub-Routes merging**: before v0.7.2, `x-react-router` only supports merging same Route-tree, if the structures are different, `x-react-router` will mark them new Routes
 - [ ] **File updating** 
 - [ ] **Caching the component-list**
 - [x] **Basic Routing**
  - see [react-router](https://github.com/ReactTraining/react-router)
  - similar but not all same (such as x-react-router use [path-to-regexp](https://www.npmjs.com/package/path-to-regexp))
+- [x] **Parsing path params**: pass the path params defined in `path` to `location` so the Routes could get them for more[since v1.2.0]
 - [x] **Supporting lazy-load**
  - set `component=[STRING]`
  - load `STRING[.js]`
