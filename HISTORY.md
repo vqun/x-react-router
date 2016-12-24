@@ -1,3 +1,6 @@
+# v1.2.0
+Supporting `params`: `x-react-router@>=1.2.0` will pass the matched route information as `props.params` to the **matched** Route. You could get the route information now.
+
 # v1.0.0
 **IMPORTANT**: Starting with v1.0.0, `x-react-router` will change the mechanisms on Route merging. And **INCOMPATIBLE** with `x-react-router@"<1.0.0"`. In `x-react-router@"<1.0.0"`, if your lazy-loading(including preloads) Routes will be merged to old one's root. But, in `x-react-router@">=1.0.0"`, the lazy-loading Routes will be **INSERTED** to where they were loaded. For example:
 
