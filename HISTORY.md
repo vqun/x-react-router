@@ -1,3 +1,9 @@
+# v1.2.2
+修复loading取值
+
+# v1.2.1
+[**Temporary solution**]Collect all scripts and mark the ones have `src` as `LOADED` `Router`s, to prevent first Router been reloaded.
+
 # v1.2.0
 Supporting `params`: `x-react-router@>=1.2.0` will pass the matched route information as `props.params` to the **matched** Route. You could get the route information now.
 
